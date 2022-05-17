@@ -1,37 +1,21 @@
-package entities;
+package dataEntities;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.xml.bind.annotation.XmlRootElement;
 
-@Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class ApplicationUser implements Serializable {
+import entities.Administrator;
+import entities.ApplicationUser;
+import entities.Authority;
+import entities.Citizen;
+import entities.Functionary;
+import utils.UserType;
 
-	public ApplicationUser(String gubUyToken, String tokens, String dni, String email, String names, String surnames,
-			String birthDate, String nationality, String gender, String password) {
-		super();
-
-		this.gubUyToken = gubUyToken;
-		this.tokens = tokens;
-		this.dni = dni;
-		this.email = email;
-		this.names = names;
-		this.surnames = surnames;
-		this.birthDate = birthDate;
-		this.nationality = nationality;
-		this.gender = gender;
-		this.password = password;
-	}
+@XmlRootElement
+public class DataApplicationUser implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue
 	private Long id;
 
 	private String gubUyToken;
@@ -50,8 +34,39 @@ public class ApplicationUser implements Serializable {
 
 	private String password;
 
-	public ApplicationUser() {
+	private UserType userType;
+
+	public DataApplicationUser() {
 		super();
+	}
+
+	public DataApplicationUser(ApplicationUser user) {
+
+		super();
+
+		this.id = user.getId();
+		this.gubUyToken = user.getGubUyToken();
+		this.tokens = user.getTokens();
+		this.dni = user.getDni();
+		this.email = user.getEmail();
+		this.names = user.getNames();
+		this.surnames = user.getSurnames();
+		this.birthDate = user.getBirthDate();
+		this.nationality = user.getNationality();
+		this.gender = user.getGender();
+
+		this.password = null;
+
+		if (user instanceof Administrator) {
+			this.setUserType(UserType.Administrator);
+		} else if (user instanceof Authority) {
+			this.setUserType(UserType.Authority);
+		} else if (user instanceof Functionary) {
+			this.setUserType(UserType.Functionary);
+		} else if (user instanceof Citizen) {
+			this.setUserType(UserType.Citizen);
+		}
+
 	}
 
 	public Long getId() {
@@ -140,6 +155,14 @@ public class ApplicationUser implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public UserType getUserType() {
+		return userType;
+	}
+
+	public void setUserType(UserType userType) {
+		this.userType = userType;
 	}
 
 }

@@ -1,19 +1,14 @@
-package entities;
+package dataEntities;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.xml.bind.annotation.XmlRootElement;
 
-@Entity
+@XmlRootElement
+public class DataPhase implements Serializable {
 
-public class Phase implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue
 	private Long id;
 
 	private String title;
@@ -24,24 +19,17 @@ public class Phase implements Serializable {
 
 	private String surveyLink;
 
-	@ManyToOne
-	@JoinColumn(name = "participativeProcessId", referencedColumnName = "id")
-	private ParticipativeProcess participativeProcess;
-
-	private static final long serialVersionUID = 1L;
-
-	public Phase() {
+	public DataPhase() {
 		super();
 	}
 
-	public Phase(String title, String description, Boolean current, String surveyLink) {
+	public DataPhase(String title, String description, Boolean current, String surveyLink) {
 		super();
 
 		this.title = title;
 		this.description = description;
 		this.current = current;
 		this.surveyLink = surveyLink;
-
 	}
 
 	public Long getId() {
@@ -74,14 +62,6 @@ public class Phase implements Serializable {
 
 	public void setCurrent(Boolean current) {
 		this.current = current;
-	}
-
-	public ParticipativeProcess getParticipativeProcess() {
-		return participativeProcess;
-	}
-
-	public void setParticipativeProcess(ParticipativeProcess participativeProcess) {
-		this.participativeProcess = participativeProcess;
 	}
 
 	public String getSurveyLink() {

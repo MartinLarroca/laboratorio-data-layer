@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import utils.EvaluationType;
+
 @Entity
 
 public class Evaluation implements Serializable {
@@ -19,6 +21,15 @@ public class Evaluation implements Serializable {
 	private Long id;
 
 	private String result;
+
+	private EvaluationType evaluationType;
+
+	public Evaluation(String result, EvaluationType evaluationType) {
+		super();
+
+		this.result = result;
+		this.evaluationType = evaluationType;
+	}
 
 	@ManyToOne
 	@JoinColumn(name = "evaluatorId", referencedColumnName = "id")
@@ -46,6 +57,30 @@ public class Evaluation implements Serializable {
 
 	public void setResult(String result) {
 		this.result = result;
+	}
+
+	public EvaluationType getEvaluationType() {
+		return evaluationType;
+	}
+
+	public void setEvaluationType(EvaluationType evaluationType) {
+		this.evaluationType = evaluationType;
+	}
+
+	public Evaluator getEvaluator() {
+		return evaluator;
+	}
+
+	public void setEvaluator(Evaluator evaluator) {
+		this.evaluator = evaluator;
+	}
+
+	public Initiative getInitiative() {
+		return initiative;
+	}
+
+	public void setInitiative(Initiative initiative) {
+		this.initiative = initiative;
 	}
 
 }

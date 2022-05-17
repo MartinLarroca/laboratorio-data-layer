@@ -20,6 +20,12 @@ public class Evaluator implements Serializable {
 
 	private String name;
 
+	public Evaluator(Long id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+
 	@OneToMany(mappedBy = "evaluator")
 	private List<Evaluation> evaluations;
 
@@ -41,6 +47,14 @@ public class Evaluator implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public List<Evaluation> getEvaluations() {
+		return evaluations;
+	}
+
+	public void setEvaluations(List<Evaluation> evaluations) {
+		this.evaluations = evaluations;
 	}
 
 }

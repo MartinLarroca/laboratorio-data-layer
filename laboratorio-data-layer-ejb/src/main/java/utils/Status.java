@@ -1,6 +1,6 @@
 package utils;
 
-public enum State {
+public enum Status {
 
 	Entered,
 

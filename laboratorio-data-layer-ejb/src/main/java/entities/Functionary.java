@@ -19,4 +19,9 @@ public class Functionary extends ApplicationUser implements Serializable {
 		super();
 	}
 
+	public Functionary(String gubUyToken, String tokens, String dni, String email, String names, String surnames,
+			String birthDate, String nationality, String gender, String password) {
+		super(gubUyToken, tokens, dni, email, names, surnames, birthDate, nationality, gender, password);
+	}
+
 }

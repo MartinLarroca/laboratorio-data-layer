@@ -1,3 +1,4 @@
+
 package entities;
 
 import java.io.Serializable;
@@ -28,13 +29,27 @@ public class ParticipativeProcess implements Serializable {
 
 	private Gender gender;
 
-	private Integer min_age;
+	private Integer minAge;
 
-	private Integer max_age;
+	private Integer maxAge;
 
 	private Boolean forUruguayans;
 
 	private Boolean forForeigns;
+
+	public ParticipativeProcess(String name, String description, Gender gender, Integer minAge, Integer maxAge,
+			Boolean forUruguayans, Boolean forForeigns) {
+		super();
+
+		this.name = name;
+		this.description = description;
+		this.gender = gender;
+		this.minAge = minAge;
+		this.maxAge = maxAge;
+		this.forUruguayans = forUruguayans;
+		this.forForeigns = forForeigns;
+
+	}
 
 	@ManyToOne
 	@JoinColumn(name = "functionaryId", referencedColumnName = "id")
@@ -79,22 +94,6 @@ public class ParticipativeProcess implements Serializable {
 		this.gender = gender;
 	}
 
-	public Integer getMin_age() {
-		return min_age;
-	}
-
-	public void setMin_age(Integer min_age) {
-		this.min_age = min_age;
-	}
-
-	public Integer getMax_age() {
-		return max_age;
-	}
-
-	public void setMax_age(Integer max_age) {
-		this.max_age = max_age;
-	}
-
 	public Boolean getForUruguayans() {
 		return forUruguayans;
 	}
@@ -109,6 +108,38 @@ public class ParticipativeProcess implements Serializable {
 
 	public void setForForeigns(Boolean forForeigns) {
 		this.forForeigns = forForeigns;
+	}
+
+	public Functionary getFunctionary() {
+		return functionary;
+	}
+
+	public void setFunctionary(Functionary functionary) {
+		this.functionary = functionary;
+	}
+
+	public List<Phase> getPhase() {
+		return phase;
+	}
+
+	public void setPhase(List<Phase> phase) {
+		this.phase = phase;
+	}
+
+	public Integer getMinAge() {
+		return minAge;
+	}
+
+	public void setMinAge(Integer minAge) {
+		this.minAge = minAge;
+	}
+
+	public Integer getMaxAge() {
+		return maxAge;
+	}
+
+	public void setMaxAge(Integer maxAge) {
+		this.maxAge = maxAge;
 	}
 
 }

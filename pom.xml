@@ -28,8 +28,8 @@
 
     <modules>
         <module>laboratorio-data-layer-ejb</module>
-        <module>laboratorio-data-layer-web</module>
         <module>laboratorio-data-layer-ear</module>
+        <module>laboratorio-data-layer-services</module>
     </modules>
 
     <properties>
@@ -102,14 +102,7 @@
 
             <!-- Define the version of the WAR so that we don't need to repeat
                 ourselves in every module -->
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>laboratorio-data-layer-web</artifactId>
-                <version>${project.version}</version>
-                <type>war</type>
-                <scope>compile</scope>
-            </dependency>
-            
+       
             <!-- JBoss distributes a complete set of Jakarta EE 8 APIs including
                 a Bill of Materials (BOM). A BOM specifies the versions of a "stack" (or 
                 a collection) of artifacts. We use this here so that we always get the correct 

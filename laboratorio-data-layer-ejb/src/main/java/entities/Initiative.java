@@ -10,12 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import utils.State;
+import utils.Status;
 
-/**
- * Entity implementation class for Entity: Initiative
- *
- */
 @Entity
 
 public class Initiative implements Serializable {
@@ -34,7 +30,18 @@ public class Initiative implements Serializable {
 
 	private String benefits;
 
-	private State state;
+	private Status status;
+
+	public Initiative(String title, String problem, String solution, String benefits, Status status) {
+		super();
+
+		this.title = title;
+		this.problem = problem;
+		this.solution = solution;
+		this.benefits = benefits;
+		this.status = status;
+
+	}
 
 	@ManyToOne
 	@JoinColumn(name = "organizationId", referencedColumnName = "id")
@@ -87,12 +94,28 @@ public class Initiative implements Serializable {
 		this.benefits = benefits;
 	}
 
-	public State getState() {
-		return state;
+	public Status getStatus() {
+		return status;
 	}
 
-	public void setState(State state) {
-		this.state = state;
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
+	public Organization getOrganization() {
+		return organization;
+	}
+
+	public void setOrganization(Organization organization) {
+		this.organization = organization;
+	}
+
+	public List<Evaluation> getEvaluations() {
+		return evaluations;
+	}
+
+	public void setEvaluations(List<Evaluation> evaluations) {
+		this.evaluations = evaluations;
 	}
 
 }

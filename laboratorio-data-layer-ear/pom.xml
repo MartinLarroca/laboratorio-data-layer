@@ -36,11 +36,7 @@
         </dependency>
 
         <!-- Depend on the EJB module and WAR so that we can package them -->
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>laboratorio-data-layer-web</artifactId>
-            <type>war</type>
-        </dependency>
+        
     </dependencies>
 
     <build>

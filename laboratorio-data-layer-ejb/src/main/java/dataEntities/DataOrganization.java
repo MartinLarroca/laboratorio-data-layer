@@ -1,21 +1,17 @@
-package entities;
+package dataEntities;
 
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlRootElement;
 
-@Entity
+import entities.Organization;
 
-public class Organization implements Serializable {
+@XmlRootElement
+public class DataOrganization implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue
 	private Long id;
 
 	private String name;
@@ -27,22 +23,22 @@ public class Organization implements Serializable {
 	private String clientId;
 	private String token;
 
-	public Organization(String name, String email, String address, String telephone, String clientId, String token) {
+	private List<DataInitiative> dataInitiatives;
+
+	public DataOrganization(Organization organization) {
 		super();
 
-		this.name = name;
-		this.email = email;
-		this.address = address;
-		this.telephone = telephone;
-		this.clientId = clientId;
-		this.token = token;
+		this.id = organization.getId();
+		this.name = organization.getName();
+		this.email = organization.getEmail();
+		this.address = organization.getAddress();
+		this.telephone = organization.getTelephone();
+		this.clientId = organization.getClientId();
+		this.token = organization.getToken();
 
 	}
 
-	@OneToMany(mappedBy = "organization")
-	private List<Initiative> initiatives;
-
-	public Organization() {
+	public DataOrganization() {
 		super();
 	}
 
@@ -62,20 +58,20 @@ public class Organization implements Serializable {
 		this.name = name;
 	}
 
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
 	public String getEmail() {
 		return email;
 	}
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public String getTelephone() {
@@ -102,12 +98,12 @@ public class Organization implements Serializable {
 		this.token = token;
 	}
 
-	public List<Initiative> getInitiatives() {
-		return initiatives;
+	public List<DataInitiative> getDataInitiatives() {
+		return dataInitiatives;
 	}
 
-	public void setInitiatives(List<Initiative> initiatives) {
-		this.initiatives = initiatives;
+	public void setDataInitiatives(List<DataInitiative> dataInitiatives) {
+		this.dataInitiatives = dataInitiatives;
 	}
 
 }
