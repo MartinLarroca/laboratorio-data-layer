@@ -26,7 +26,7 @@ public class EvaluatorsController implements EvaluatorsControllerRemote {
 
 	public ArrayList<DataEvaluator> findAll() {
 
-		ArrayList<Evaluator> evaluators = (ArrayList<Evaluator>) em.createQuery("from Evaluation", Evaluator.class)
+		ArrayList<Evaluator> evaluators = (ArrayList<Evaluator>) em.createQuery("from Evaluator", Evaluator.class)
 				.getResultList();
 
 		ArrayList<DataEvaluator> dataEvaluators = new ArrayList<DataEvaluator>();
