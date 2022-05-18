@@ -18,4 +18,6 @@ public interface OrganizationsControllerRemote {
 
 	public ArrayList<DataInitiative> getInitiatives(Long id);
 
+	public DataInitiative addInitiative(DataInitiative dataInitiative);
+
 }

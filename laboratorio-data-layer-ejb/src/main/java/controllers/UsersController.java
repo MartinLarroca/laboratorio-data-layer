@@ -1,6 +1,7 @@
 package controllers;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -109,7 +110,7 @@ public class UsersController implements UsersControllerRemote {
 
 		Citizen citizen = em.find(Citizen.class, id);
 
-		ArrayList<Badge> badges = (ArrayList<Badge>) citizen.getBadges();
+		List<Badge> badges = citizen.getBadges();
 
 		ArrayList<DataBadge> dataBadges = new ArrayList<DataBadge>();
 

@@ -1,6 +1,7 @@
 package controllers;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -58,7 +59,9 @@ public class ParicipativeProcessesController implements ParicipativeProcessesCon
 
 		participativeProcess.setFunctionary(functionary);
 
-		ArrayList<DataPhase> phases = (ArrayList<DataPhase>) dataParticipativeProcess.getPhases();
+		em.persist(participativeProcess);
+
+		List<DataPhase> phases = dataParticipativeProcess.getPhases();
 
 		for (int i = 0; i < phases.size(); i++) {
 
@@ -70,6 +73,8 @@ public class ParicipativeProcessesController implements ParicipativeProcessesCon
 			Phase phase = new Phase(phaseTitle, phaseDescription, phaseCurrent, surveyLink);
 
 			phase.setParticipativeProcess(participativeProcess);
+
+			em.persist(phase);
 		}
 
 		return new DataParticipativeProcess(participativeProcess);

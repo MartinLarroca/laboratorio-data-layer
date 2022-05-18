@@ -14,4 +14,6 @@ public interface EvaluationsControllerRemote {
 
 	public List<EvaluationType> getEvaluationTypes();
 
+	public DataEvaluation evaluate(DataEvaluation dataEvaluation);
+
 }

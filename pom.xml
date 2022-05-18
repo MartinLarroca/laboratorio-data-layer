@@ -29,7 +29,7 @@
     <modules>
         <module>laboratorio-data-layer-ejb</module>
         <module>laboratorio-data-layer-ear</module>
-        <module>laboratorio-data-layer-services</module>
+
     </modules>
 
     <properties>

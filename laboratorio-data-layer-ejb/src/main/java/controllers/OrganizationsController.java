@@ -86,4 +86,19 @@ public class OrganizationsController implements OrganizationsControllerRemote {
 
 	}
 
+	public DataInitiative addInitiative(DataInitiative dataInitiative) {
+
+		Initiative initiative = new Initiative(dataInitiative.getTitle(), dataInitiative.getProblem(),
+				dataInitiative.getSolution(), dataInitiative.getBenefits(), dataInitiative.getStatus());
+
+		Organization organization = em.find(Organization.class, dataInitiative.getDataOrganization().getId());
+
+		initiative.setOrganization(organization);
+
+		em.persist(initiative);
+
+		return new DataInitiative(initiative);
+
+	}
+
 }

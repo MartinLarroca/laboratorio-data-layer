@@ -12,7 +12,7 @@ public interface InitiativesControllerRemote {
 
 	public ArrayList<DataInitiative> findAll();
 
-	public DataInitiative create(DataInitiative dataInitiatived);
+	public DataInitiative findOne(Long id);
 
 	public DataInitiative update(DataInitiative dataInitiative);
 

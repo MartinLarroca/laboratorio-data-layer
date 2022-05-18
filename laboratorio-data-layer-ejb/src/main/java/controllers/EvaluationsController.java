@@ -29,15 +29,27 @@ public class EvaluationsController implements EvaluationsControllerRemote {
 
 		Evaluation evaluation = new Evaluation(dataEvaluation.getResult(), dataEvaluation.getEvaluationType());
 
-		Initiative initiative = em.find(Initiative.class, evaluation.getInitiative().getId());
+		Initiative initiative = em.find(Initiative.class, dataEvaluation.getDataInitiative().getId());
 
-		Evaluator evaluator = em.find(Evaluator.class, evaluation.getEvaluator().getId());
+		Evaluator evaluator = em.find(Evaluator.class, dataEvaluation.getDataEvaluator().getId());
 
 		evaluation.setEvaluator(evaluator);
 
 		evaluation.setInitiative(initiative);
 
-		em.persist(initiative);
+		em.persist(evaluation);
+
+		return new DataEvaluation(evaluation);
+
+	}
+
+	public DataEvaluation evaluate(DataEvaluation dataEvaluation) {
+
+		Evaluation evaluation = em.find(Evaluation.class, dataEvaluation.getId());
+
+		evaluation.setResult(dataEvaluation.getResult());
+
+		em.persist(evaluation);
 
 		return new DataEvaluation(evaluation);
 
